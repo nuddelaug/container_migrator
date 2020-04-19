@@ -20,6 +20,12 @@ another physical host with _more or less_ the same specifications as on the orig
 the tool is not altering Dockers internal or similar. So don't expect that memory is transfered or the content of a persistent
 storage.
 
+* it will only migrate you container to the _default_ Network in Docker
+* it will not check if the storage id used on the new Host is used by something else 
+* it will not create user id specifics stuff (at least not in this release)
+* it will not transfer any kind of storage images as this isn't supported by the Docker API
+* it will not transfer/create locally build images not accessable in a public registry 
+
 ## step by step howto
 
 ### requirements/pre requisits
@@ -31,6 +37,8 @@ tool will not be able to do anything for you.
 * Docker socket connectivity, since we are talking about physical separated systems, preferable uri's are tcp://<hostname>:<port> 
 * _root/privileged_ access to persistent container storage 
 * python 3
+* ensure the container storage ID's are not used on the new Host
+* ensure the image the container is based on can be retrieved through a public registry 
 
 ### installation 
 
